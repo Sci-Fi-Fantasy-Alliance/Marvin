@@ -1,7 +1,11 @@
 {
-    "name": "my-bot",
+    "name": "marvin",
     "version": "1.0.0",
     "author": "Kevin Novak",
+    "maintainers": [
+        "RowenStipe",
+        "Solanj"
+    ],
     "description": "A discord.js bot template written with TypeScript",
     "license": "MIT",
     "private": true,
@@ -29,7 +33,9 @@
         "start:pm2": "npm run build && npm run pm2:start",
         "pm2:start": "pm2 start process.json",
         "pm2:stop": "pm2 stop process.json",
-        "pm2:delete": "pm2 delete process.json"
+        "pm2:delete": "pm2 delete process.json",
+        "watch": "tsc -w",
+        "watch:bot": "npm run watch & node --enable-source-maps dist/start-bot.js"
     },
     "dependencies": {
         "@discordjs/rest": "0.3.0",
