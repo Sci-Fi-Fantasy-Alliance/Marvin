@@ -9,7 +9,8 @@
         "info": "info",
         "link": "link",
         "test": "test",
-        "translate": "translate"
+        "translate": "translate",
+        "trello": "trello"
     },
     "arguments": {
         "link": "link"

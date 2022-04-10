@@ -13,6 +13,7 @@ import {
     TestCommand,
     TranslateCommand,
 } from './commands/index.js';
+import { TrelloCommand } from './commands/trello-command.js';
 import {
     ButtonHandler,
     CommandHandler,
@@ -54,6 +55,7 @@ async function start(): Promise<void> {
         new LinkCommand(),
         new TestCommand(),
         new TranslateCommand(),
+        new TrelloCommand(),
         // TODO: Add new commands here
     ].sort((a, b) => (a.metadata.name > b.metadata.name ? 1 : -1));
 
