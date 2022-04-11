@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import { MessageEmbed } from 'discord.js';
 import fetch from 'node-fetch';
 import { createRequire } from 'node:module';
+
+import { TrelloCard } from '../models/trello/interfaces.js';
 
 const require = createRequire(import.meta.url);
 let Config = require('../../config/config.json');
 
 const trelloAPIURL = 'https://api.trello.com/1';
-
-/*
-    
- */
 
 export class TrelloService {
     /**
@@ -80,5 +79,17 @@ export class TrelloService {
         //Outputs as JSON object
         const body = await response.json();
         return body;
+    }
+
+    /**
+     * discordCardEmbed
+     */
+    static discordCardEmbed(cardData: TrelloCard): MessageEmbed {
+        const cardEmbed = new MessageEmbed()
+            .setColor('NOT_QUITE_BLACK')
+            .setTitle(cardData.name)
+            .setURL(cardData.url)
+            .setDescription(cardData.desc);
+        return cardEmbed;
     }
 }
