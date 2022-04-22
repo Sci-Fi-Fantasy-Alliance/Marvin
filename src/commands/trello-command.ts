@@ -1,3 +1,4 @@
+import { ApplicationCommandOptionType } from 'discord-api-types/v10';
 import {
     CacheType,
     ChatInputApplicationCommandData,
@@ -5,7 +6,6 @@ import {
     MessageEmbed,
     PermissionString,
 } from 'discord.js';
-import { createRequire } from 'node:module';
 
 import { EventData } from '../models/internal-models.js';
 import { TrelloCard } from '../models/trello/interfaces.js';
@@ -16,13 +16,43 @@ import { InteractionUtils } from '../utils/interaction-utils.js';
 import { CommandDeferType } from './command.js';
 import { Command } from './index.js';
 
-const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
-
 export class TrelloCommand implements Command {
     public metadata: ChatInputApplicationCommandData = {
         name: Lang.getCom('commands.trello'),
         description: Lang.getRef('commandDescs.trello', Lang.Default),
+        options: [
+            {
+                name: 'get',
+                description: 'get card from trello',
+                type: ApplicationCommandOptionType.Subcommand.valueOf(),
+                options: [
+                    {
+                        name: 'boardid',
+                        description: 'board ID to use',
+                        type: ApplicationCommandOptionType.String.valueOf(),
+                    },
+                ],
+            },
+            {
+                name: 'post',
+                description: 'post card to trello',
+                type: ApplicationCommandOptionType.Subcommand.valueOf(),
+                options: [
+                    {
+                        name: 'name',
+                        description: 'Name of the card',
+                        type: ApplicationCommandOptionType.String.valueOf(),
+                        required: true,
+                    },
+                    {
+                        name: 'desc',
+                        description: 'Contents of the card',
+                        type: ApplicationCommandOptionType.String.valueOf(),
+                        required: true,
+                    },
+                ],
+            },
+        ],
     };
     public deferType = CommandDeferType.PUBLIC;
     public requireDev = false;
@@ -31,11 +61,32 @@ export class TrelloCommand implements Command {
     public requireUserPerms: PermissionString[] = [];
 
     public async execute(intr: CommandInteraction<CacheType>, _data: EventData): Promise<void> {
+        const option = intr.options.getSubcommand();
         new TrelloService();
-        let listCards: TrelloCard[] = await TrelloService.getListCardsJSON(
-            '624f419705d588375c170bc4'
-        );
-        const cardEmbed: MessageEmbed = TrelloService.discordCardEmbed(listCards[0]);
-        await InteractionUtils.send(intr, cardEmbed);
+        switch (option) {
+            case 'get': {
+                let listCards: TrelloCard[] = await TrelloService.getListCards(
+                    intr.options.getString('boardid')
+                );
+                let cardEmbed: MessageEmbed = TrelloService.discordCardEmbed(listCards[0]);
+                await InteractionUtils.send(intr, cardEmbed);
+                break;
+            }
+
+            case 'post': {
+                const postCardInfo = {
+                    name: 'marvin test',
+                    desc: 'hard code test',
+                };
+                Logger.info(JSON.stringify(postCardInfo));
+                let postCard: TrelloCard = await TrelloService.postCard2List(postCardInfo);
+                let cardEmbed: MessageEmbed = TrelloService.discordCardEmbed(postCard);
+                await InteractionUtils.send(intr, cardEmbed);
+                break;
+            }
+
+            default:
+                break;
+        }
     }
 }

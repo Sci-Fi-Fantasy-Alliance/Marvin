@@ -13,7 +13,8 @@
         "trello": "trello"
     },
     "arguments": {
-        "link": "link"
+        "link": "link",
+        "trello": "trello"
     },
     "colors": {
         "default": "#0099ff",

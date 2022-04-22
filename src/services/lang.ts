@@ -13,6 +13,11 @@ export class Lang {
         'lang'
     );
 
+    private static linguiniMarvin = new Linguini(
+        path.resolve(dirname(fileURLToPath(import.meta.url)), '../../lang/marvin'),
+        'lang'
+    );
+
     public static getEmbed(
         location: string,
         langCode: LangCode,
@@ -44,6 +49,17 @@ export class Lang {
 
     public static getCom(location: string, variables?: { [name: string]: string }): string {
         return this.linguini.getCom(location, variables);
+    }
+
+    public static getMarvinRef(
+        location: string,
+        langCode: LangCode,
+        variables?: { [name: string]: string }
+    ): string {
+        return (
+            this.linguiniMarvin.getRef(location, langCode, variables) ??
+            this.linguiniMarvin.getRef(location, this.Default, variables)
+        );
     }
 
     private static messageEmbedTm: TypeMapper<MessageEmbed> = (jsonValue: any) => {
