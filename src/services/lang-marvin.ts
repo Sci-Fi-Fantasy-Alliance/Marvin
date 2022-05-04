@@ -4,12 +4,14 @@ import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { LangCode } from '../enums/index.js';
+import { Mentions } from '../models/marvin/index.js';
+import { MentionMessage } from '../models/marvin/mention.js';
 
-export class Lang {
+export class MarvinLang {
     public static Default = LangCode.EN_US;
 
-    private static linguini = new Linguini(
-        path.resolve(dirname(fileURLToPath(import.meta.url)), '../../lang'),
+    private static marvinLang = new Linguini(
+        path.resolve(dirname(fileURLToPath(import.meta.url)), '../../lang/marvin'),
         'lang'
     );
 
@@ -19,15 +21,15 @@ export class Lang {
         variables?: { [name: string]: string }
     ): MessageEmbed {
         return (
-            this.linguini.get(location, langCode, this.messageEmbedTm, variables) ??
-            this.linguini.get(location, this.Default, this.messageEmbedTm, variables)
+            this.marvinLang.get(location, langCode, this.messageEmbedTm, variables) ??
+            this.marvinLang.get(location, this.Default, this.messageEmbedTm, variables)
         );
     }
 
     public static getRegex(location: string, langCode: LangCode): RegExp {
         return (
-            this.linguini.get(location, langCode, TypeMappers.RegExp) ??
-            this.linguini.get(location, this.Default, TypeMappers.RegExp)
+            this.marvinLang.get(location, langCode, TypeMappers.RegExp) ??
+            this.marvinLang.get(location, this.Default, TypeMappers.RegExp)
         );
     }
 
@@ -37,13 +39,24 @@ export class Lang {
         variables?: { [name: string]: string }
     ): string {
         return (
-            this.linguini.getRef(location, langCode, variables) ??
-            this.linguini.getRef(location, this.Default, variables)
+            this.marvinLang.getRef(location, langCode, variables) ??
+            this.marvinLang.getRef(location, this.Default, variables)
         );
     }
 
     public static getCom(location: string, variables?: { [name: string]: string }): string {
-        return this.linguini.getCom(location, variables);
+        return this.marvinLang.getCom(location, variables);
+    }
+
+    public static getMentionRNG(
+        location: string,
+        langCode: LangCode,
+        variables?: { [name: string]: string }
+    ): Mentions {
+        return (
+            this.marvinLang.get(location, langCode, this.mentionRNG, variables) ??
+            this.marvinLang.get(location, this.Default, this.mentionRNG, variables)
+        );
     }
 
     private static messageEmbedTm: TypeMapper<MessageEmbed> = (jsonValue: any) => {
@@ -68,7 +81,11 @@ export class Lang {
                 iconURL: jsonValue.footer?.icon,
             },
             timestamp: jsonValue.timestamp ? Date.now() : undefined,
-            color: jsonValue.color ?? Lang.getCom('colors.default'),
+            color: jsonValue.color ?? MarvinLang.getCom('colors.default'),
         });
+    };
+
+    private static mentionRNG: TypeMapper<Mentions> = (jsonValue: any) => {
+        return new MentionMessage({ rngList: jsonValue.rngList });
     };
 }

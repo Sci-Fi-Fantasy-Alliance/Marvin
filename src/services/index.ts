@@ -4,3 +4,4 @@ export { Lang } from './lang.js';
 export { Logger } from './logger.js';
 export { MasterApiService } from './master-api-service.js';
 export { TrelloService } from './trello.js';
+export { MarvinLang } from './lang-marvin.js';

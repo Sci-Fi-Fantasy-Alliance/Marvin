@@ -9,12 +9,9 @@ import {
 
 import { EventData } from '../models/internal-models.js';
 import { TrelloCard } from '../models/trello/interfaces.js';
-import { Lang } from '../services/lang.js';
-import { Logger } from '../services/logger.js';
-import { TrelloService } from '../services/trello.js';
-import { InteractionUtils } from '../utils/interaction-utils.js';
-import { CommandDeferType } from './command.js';
-import { Command } from './index.js';
+import { Lang, Logger, TrelloService } from '../services/index.js';
+import { InteractionUtils } from '../utils/index.js';
+import { Command, CommandDeferType } from './index.js';
 
 export class TrelloCommand implements Command {
     public metadata: ChatInputApplicationCommandData = {
