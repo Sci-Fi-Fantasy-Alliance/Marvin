@@ -86,6 +86,6 @@ export class MarvinLang {
     };
 
     private static mentionRNG: TypeMapper<Mentions> = (jsonValue: any) => {
-        return new MentionMessage({ rngList: jsonValue.rngList });
+        return new MentionMessage({ rngList: jsonValue });
     };
 }
