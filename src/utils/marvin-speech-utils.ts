@@ -1,4 +1,4 @@
-import { Logger, MarvinLang } from '../services/index.js';
+import { MarvinLang } from '../services/index.js';
 
 export class MarvinSpeechUtils {
     public static randMention(): string {

@@ -6,3 +6,4 @@ export { LinkCommand } from './link-command.js';
 export { TestCommand } from './test-command.js';
 export { TranslateCommand } from './translate-command.js';
 export { TrelloCommand } from './trello-command.js';
+export { OpenLibrary } from '../services/openlibrary.js';

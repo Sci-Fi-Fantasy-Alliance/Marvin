@@ -5,3 +5,4 @@ export { Logger } from './logger.js';
 export { MasterApiService } from './master-api-service.js';
 export { TrelloService } from './trello.js';
 export { MarvinLang } from './lang-marvin.js';
+export { OpenLibrary } from './openlibrary.js';

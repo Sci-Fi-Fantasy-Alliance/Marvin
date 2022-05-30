@@ -57,7 +57,7 @@ export class TrelloService {
         return body;
     }
 
-    static async postCard2List(cardInfo): Promise<any> {
+    static async postCard2List(cardInfo: { name: string; desc: string }): Promise<any> {
         const postInfo = JSON.stringify(cardInfo);
         const postCreate = await fetch(
             trelloAPIURL +
@@ -87,14 +87,15 @@ export class TrelloService {
     }
 
     static async getBoards(): Promise<any> {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const boards = await fetch(
             trelloAPIURL +
-            'members/me/boards' +
-            '?key=' +
-            Config.trello.key +
-            '&token=' +
-            Config.trello.token,
-        )
+                'members/me/boards' +
+                '?key=' +
+                Config.trello.key +
+                '&token=' +
+                Config.trello.token
+        );
         //TODO return board membership.
         const boardList = 0;
     }
