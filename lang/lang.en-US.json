@@ -49,17 +49,7 @@
                     { "name": "Author", "value": "{{REF:links.authorEmbed}}" },
                     {
                         "name": "{{REF:fields.links}}",
-                        "value": [
-                            "{{REF:links.sourceEmbed}}",
-                            "{{REF:links.docsEmbed}}",
-                            "{{REF:links.donateEmbed}}",
-                            "{{REF:links.supportEmbed}}",
-                            "{{REF:links.inviteEmbed}}"
-                        ]
-                    },
-                    {
-                        "name": "Created With",
-                        "value": ["{{REF:links.templateEmbed}}"]
+                        "value": ["{{REF:links.sourceEmbed}}"]
                     }
                 ]
             },
@@ -196,7 +186,8 @@
             "info": "View bot info.",
             "link": "Get links to invite, support, etc.",
             "test": "Run the test command.",
-            "translate": "View translation info."
+            "translate": "View translation info.",
+            "trello": "Command for Trello"
         },
         "lists": {
             "languageItem": "**{{LANGUAGE_NAME}}** (`{{LANGUAGE_KEYWORD}}`)"
@@ -259,9 +250,7 @@
             "donateEmbed": "[Donate via PayPal]({{COM:links.donate}})",
             "inviteEmbed": "[Invite {{COM:bot.name}} to a Server!]({{COM:links.invite}})",
             "sourceEmbed": "[View Source Code]({{COM:links.source}})",
-            "supportEmbed": "[Join Support Server]({{COM:links.support}})",
-            "templateEmbed": "[Discord Bot TypeScript Template]({{COM:links.template}})",
-            "voteEmbed": "[Vote for {{COM:bot.name}}!]({{COM:links.vote}})"
+            "supportEmbed": "[Join Support Server]({{COM:links.support}})"
         }
     }
 }

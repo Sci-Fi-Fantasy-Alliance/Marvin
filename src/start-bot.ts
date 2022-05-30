@@ -1,18 +1,10 @@
 import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
+import { Routes } from 'discord-api-types/v10';
 import { Options } from 'discord.js';
 import { createRequire } from 'node:module';
 
 import { Button } from './buttons/index.js';
-import {
-    Command,
-    DevCommand,
-    HelpCommand,
-    InfoCommand,
-    LinkCommand,
-    TestCommand,
-    TranslateCommand,
-} from './commands/index.js';
+import { Command, HelpCommand, TrelloCommand } from './commands/index.js';
 import {
     ButtonHandler,
     CommandHandler,
@@ -27,12 +19,12 @@ import { Job } from './jobs/index.js';
 import { Bot } from './models/bot.js';
 import { Reaction } from './reactions/index.js';
 import { JobService, Logger } from './services/index.js';
-import { Trigger } from './triggers/index.js';
+import { MentionBotTrigger, Trigger } from './triggers/index.js';
 
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');
 let Logs = require('../lang/logs.json');
-
+//TODO Edit Permissions so Marvin can see other channels.
 async function start(): Promise<void> {
     // Client
     let client = new CustomClient({
@@ -48,12 +40,8 @@ async function start(): Promise<void> {
 
     // Commands
     let commands: Command[] = [
-        new DevCommand(),
         new HelpCommand(),
-        new InfoCommand(),
-        new LinkCommand(),
-        new TestCommand(),
-        new TranslateCommand(),
+        new TrelloCommand(),
         // TODO: Add new commands here
     ].sort((a, b) => (a.metadata.name > b.metadata.name ? 1 : -1));
 
@@ -70,6 +58,7 @@ async function start(): Promise<void> {
     // Triggers
     let triggers: Trigger[] = [
         // TODO: Add new triggers here
+        new MentionBotTrigger(),
     ];
 
     // Event handlers
