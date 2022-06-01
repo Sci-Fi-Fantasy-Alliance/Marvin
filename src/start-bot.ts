@@ -10,6 +10,7 @@ import {
     CommandHandler,
     GuildJoinHandler,
     GuildLeaveHandler,
+    GuildMemberJoinHandler,
     MessageHandler,
     ReactionHandler,
     TriggerHandler,
@@ -64,6 +65,7 @@ async function start(): Promise<void> {
     // Event handlers
     let guildJoinHandler = new GuildJoinHandler();
     let guildLeaveHandler = new GuildLeaveHandler();
+    let guildMemberJoinHandler = new GuildMemberJoinHandler();
     let commandHandler = new CommandHandler(commands);
     let buttonHandler = new ButtonHandler(buttons);
     let triggerHandler = new TriggerHandler(triggers);
@@ -81,6 +83,7 @@ async function start(): Promise<void> {
         client,
         guildJoinHandler,
         guildLeaveHandler,
+        guildMemberJoinHandler,
         messageHandler,
         commandHandler,
         buttonHandler,
