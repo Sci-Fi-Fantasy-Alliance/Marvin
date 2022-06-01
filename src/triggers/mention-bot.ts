@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import { createRequire } from 'node:module';
 
 import { EventData } from '../models/internal-models.js';
-import { MarvinSpeechUtils } from '../utils/index.js';
+import { MarvinSpeechUtils, TimeUtils } from '../utils/index.js';
 import { Trigger } from './index.js';
 
 const require = createRequire(import.meta.url);
@@ -18,7 +18,13 @@ export class MentionBotTrigger implements Trigger {
     }
 
     execute(msg: Message<boolean>, _data: EventData): Promise<void> {
-        msg.channel.send(MarvinSpeechUtils.randMention());
+        let msgData = {
+            USER: msg.author.id,
+        };
+        msg.channel.sendTyping();
+        TimeUtils.sleep(3500).then(() => {
+            msg.channel.send(MarvinSpeechUtils.randMention(msgData));
+        });
         return;
     }
 }

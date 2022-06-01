@@ -4,6 +4,7 @@ import {
     CommandInteraction,
     Constants,
     Guild,
+    GuildMember,
     Interaction,
     Message,
     MessageReaction,
@@ -19,6 +20,7 @@ import {
     CommandHandler,
     GuildJoinHandler,
     GuildLeaveHandler,
+    GuildMemberJoinHandler,
     MessageHandler,
     ReactionHandler,
 } from '../events/index.js';
@@ -38,6 +40,7 @@ export class Bot {
         private client: Client,
         private guildJoinHandler: GuildJoinHandler,
         private guildLeaveHandler: GuildLeaveHandler,
+        private guildMemberJoinHandler: GuildMemberJoinHandler,
         private messageHandler: MessageHandler,
         private commandHandler: CommandHandler,
         private buttonHandler: ButtonHandler,
@@ -59,6 +62,9 @@ export class Bot {
         );
         this.client.on(Constants.Events.GUILD_CREATE, (guild: Guild) => this.onGuildJoin(guild));
         this.client.on(Constants.Events.GUILD_DELETE, (guild: Guild) => this.onGuildLeave(guild));
+        this.client.on(Constants.Events.GUILD_MEMBER_ADD, (guildMember: GuildMember) =>
+            this.onGuildMemberJoin(guildMember)
+        );
         this.client.on(Constants.Events.MESSAGE_CREATE, (msg: Message) => this.onMessage(msg));
         this.client.on(Constants.Events.INTERACTION_CREATE, (intr: Interaction) =>
             this.onInteraction(intr)
@@ -119,6 +125,18 @@ export class Bot {
             await this.guildLeaveHandler.process(guild);
         } catch (error) {
             Logger.error(Logs.error.guildLeave, error);
+        }
+    }
+
+    private async onGuildMemberJoin(member: GuildMember): Promise<void> {
+        if (!this.ready || Debug.dummyMode.enabled) {
+            return;
+        }
+
+        try {
+            await this.guildMemberJoinHandler.process(member);
+        } catch (error) {
+            Logger.error('Member Join error:', error);
         }
     }
 
