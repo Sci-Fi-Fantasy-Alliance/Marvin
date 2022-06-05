@@ -2,8 +2,8 @@
     "data": {
         "mentions": {
             "rngList": [
-                "What is it <@{{USER}}>?",
-                "Why did you ping me <@{{USER}}>?",
+                "What is it <@{{USERID}}>?",
+                "Why did you ping me <@{{USERID}}>?",
                 "I am certain this ping was of the utmost importance.",
                 "Could you not?",
                 "Wouldn't invoking your so-called deity OM be more appropriate that interrupting my very important contemplations?",
@@ -11,5 +11,15 @@
             ]
         }
     },
-    "refs": {}
+    "refs": {
+        "favorites": {
+            "number": "42",
+            "color": "Grey",
+            "song": {
+                "trackName": "A Side: Marvin",
+                "author": "Stephen Moore",
+                "url": "https://music.youtube.com/watch?v=hTXOW_jJdKE"
+            }
+        }
+    }
 }

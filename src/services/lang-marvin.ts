@@ -4,8 +4,7 @@ import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { LangCode } from '../enums/index.js';
-import { Mentions } from '../models/marvin/index.js';
-import { MentionMessage } from '../models/marvin/mention.js';
+import { MarvinMentions, MentionMessage } from '../models/marvin/index.js';
 
 export class MarvinLang {
     public static Default = LangCode.EN_US;
@@ -52,7 +51,7 @@ export class MarvinLang {
         location: string,
         langCode: LangCode,
         variables?: { [name: string]: string }
-    ): Mentions {
+    ): MarvinMentions {
         return (
             this.marvinLang.get(location, langCode, this.mentionRNG, variables) ??
             this.marvinLang.get(location, this.Default, this.mentionRNG, variables)
@@ -85,7 +84,7 @@ export class MarvinLang {
         });
     };
 
-    private static mentionRNG: TypeMapper<Mentions> = (jsonValue: any) => {
+    private static mentionRNG: TypeMapper<MarvinMentions> = (jsonValue: any) => {
         return new MentionMessage({ rngList: jsonValue });
     };
 }
