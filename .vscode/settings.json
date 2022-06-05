@@ -26,6 +26,7 @@
         "discordlist",
         "disforge",
         "Fancify",
+        "favourite",
         "filesize",
         "fogbugz",
         "luxon",
@@ -40,6 +41,7 @@
         "respawned",
         "restjson",
         "SFFA",
+        "USERID",
         "varchar"
     ],
     "typescript.preferences.importModuleSpecifierEnding": "js"
