@@ -25,7 +25,7 @@ import { MentionBotTrigger, Trigger } from './triggers/index.js';
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');
 let Logs = require('../lang/logs.json');
-//TODO Edit Permissions so Marvin can see other channels.
+
 async function start(): Promise<void> {
     // Client
     let client = new CustomClient({

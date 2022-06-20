@@ -4,15 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "54f645331ee9054b",
+        "id": "aa43c4c47e50ab9b",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "General TODO List.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -53,7 +49,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ac10adb9129e010b",
@@ -69,7 +66,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "General TODO List.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,7 +83,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "54f645331ee9054b",
+  "active": "aa43c4c47e50ab9b",
   "lastOpenFiles": [
     "General TODO List.md"
   ]
