@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "marvin",
-            "script": "dist/start-manager.js",
+            "script": "dist/start-bot.js",
             "node_args": ["--enable-source-maps"],
             "restart_delay": 10000
         }

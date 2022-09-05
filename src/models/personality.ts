@@ -10,27 +10,7 @@ let config = require('../../config/config.json');
 
 //TODO: setup exception handling for all `Promise<void>` functions
 
-export class PersonalityEngine {
-    public async welcomeMessage(member: GuildMember): Promise<void> {
-        const channel = member.guild.channels.cache.get(
-            config.sffa.welcomeChannelID
-        ) as TextChannel;
-        //TODO: Add things
-
-        this.sendMessage(channel, 'Oh ... hello <@' + member.id + '>.')
-            .then(() => {
-                this.sendMessage(channel, 'Welcome to SFFA');
-            })
-            .then(() => {
-                this.sendMessage(channel, 'Now will these messages get out of order?');
-            });
-    }
-
-    public async mentionMessage(message: Message<boolean>): Promise<void> {
-        const mentionChannel = message.channel as TextChannel;
-        this.sendMessage(mentionChannel, this.randMentionString(message));
-    }
-
+export class PersonalityEngine extends MarvinLang {
     /**
      * Send typing indicator to channel
      * @param channel Channel to send typing to
@@ -84,5 +64,25 @@ export class PersonalityEngine {
     private waitCalc(string: string): number {
         const waitTimer = string.length * 100;
         return waitTimer;
+    }
+
+    public async mentionMessage(message: Message<boolean>): Promise<void> {
+        const mentionChannel = message.channel as TextChannel;
+        this.sendMessage(mentionChannel, this.randMentionString(message));
+    }
+
+    public async welcomeMessage(member: GuildMember): Promise<void> {
+        const channel = member.guild.channels.cache.get(
+            config.sffa.welcomeChannelID
+        ) as TextChannel;
+        //TODO: Add things
+
+        this.sendMessage(channel, 'Oh ... hello <@' + member.id + '>.')
+            .then(_message => {
+                return this.sendMessage(channel, 'Welcome to SFFA, home of a bunch of book nerds');
+            })
+            .then(_message => {
+                return this.sendMessage(channel, 'So what books do __you__ like?');
+            });
     }
 }
