@@ -4,11 +4,12 @@ export interface MarvinLanguage {
 }
 
 export interface MarvinLangData {
-    mentions: MarvinMentions;
+    mentions: MarvinComList;
+    random: MarvinComList;
 }
 
-export interface MarvinMentions {
-    rngList: string[];
+export interface MarvinComList {
+    comList: string[];
 }
 
 export interface MarvinLangRefs {
@@ -27,9 +28,8 @@ export interface MarvinFavoriteSong {
     url: string;
 }
 
-export class MentionMessage {
-    public rngList: string[];
-    public constructor(data?: MarvinMentions) {
-        this.rngList = data.rngList;
+export class MarvinComList implements MarvinComList {
+    constructor(data: any) {
+        this.comList = data.data;
     }
 }

@@ -27,7 +27,7 @@ export class ClientUtils {
         }
 
         try {
-            return await client.users.fetch(discordId);
+            return client.users.cache.get(discordId);
         } catch (error) {
             if (
                 error instanceof DiscordAPIError &&
@@ -47,7 +47,7 @@ export class ClientUtils {
         }
 
         try {
-            return await client.channels.fetch(discordId);
+            return client.channels.cache.get(discordId);
         } catch (error) {
             if (
                 error instanceof DiscordAPIError &&
@@ -64,7 +64,7 @@ export class ClientUtils {
         try {
             let discordId = RegexUtils.discordId(input);
             if (discordId) {
-                return await guild.members.fetch(discordId);
+                return guild.members.cache.get(discordId);
             }
 
             let tag = RegexUtils.tag(input);
@@ -117,7 +117,7 @@ export class ClientUtils {
         try {
             let discordId = RegexUtils.discordId(input);
             if (discordId) {
-                let channel = await guild.channels.fetch(discordId);
+                let channel = guild.channels.cache.get(discordId);
                 if (channel instanceof NewsChannel || channel instanceof TextChannel) {
                     return channel;
                 } else {

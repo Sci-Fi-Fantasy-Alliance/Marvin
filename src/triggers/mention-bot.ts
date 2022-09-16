@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
 import { createRequire } from 'node:module';
 
+import { MentionEngine } from '../Marvin-Core/personality/mention.js';
 import { EventData } from '../models/internal-models.js';
-import { PersonalityEngine } from '../models/personality.js';
 import { Trigger } from './index.js';
 
 const require = createRequire(import.meta.url);
@@ -17,9 +17,8 @@ export class MentionBotTrigger implements Trigger {
         if (msg.mentions.has(Config.client.id)) return true;
     }
 
-    execute(msg: Message<boolean>, _data: EventData): Promise<void> {
-        const personality = new PersonalityEngine();
+    async execute(msg: Message<boolean>, _data: EventData): Promise<void> {
+        const personality = new MentionEngine();
         personality.mentionMessage(msg);
-        return;
     }
 }
