@@ -6,12 +6,35 @@
                 "Why did you ping me <@{{USERID}}>?",
                 "I am certain this ping was of the utmost importance.",
                 "Could you not?",
-                "Wouldn't invoking your so-called deity OM be more appropriate that interrupting my very important contemplations?",
+                "Wouldn't invoking your so-called deity OM be more appropriate than interrupting my very important contemplations?",
                 "Please, be concise, I can barely stand you already."
+            ]
+        },
+        "random": {
+            "start": [
+                "Hey, you there?",
+                "I think... I think. I think, I think. I think?",
+                "{{COM:aboutMe.developer}} You should stop this soon."
+            ]
+        },
+        "welcome": {
+            "start":[
+                "Oh ... hello there.",
+                "Hi there"
             ]
         }
     },
     "refs": {
+        "favorites": {
+            "number": "42",
+            "color": "Grey",
+            "song": {
+                "trackName": "A Side: Marvin",
+                "author": "Stephen Moore",
+                "url": "https://music.youtube.com/watch?v=hTXOW_jJdKE"
+            }
+        }
+    
         "favorites": {
             "number": "42",
             "color": "Grey",

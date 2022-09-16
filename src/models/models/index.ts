@@ -1,11 +1,10 @@
 export {
     MarvinLanguage,
     MarvinLangData,
+    MarvinComList,
     MarvinLangRefs,
-    MarvinMentions,
     MarvinFavorites,
     MarvinFavoriteSong,
-    MentionMessage,
-} from './interfaces.js';
+} from '../../Marvin-Core/language/models/interfaces.js';
 
 export { MentionData } from './types.js';

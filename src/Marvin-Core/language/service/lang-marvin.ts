@@ -3,14 +3,14 @@ import { Linguini, TypeMapper, TypeMappers, Utils } from 'linguini';
 import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { LangCode } from '../enums/index.js';
-import { MarvinMentions, MentionMessage } from '../models/marvin/index.js';
+import { LangCode } from '../../../enums/index.js';
+import { MarvinComList } from '../../../models/models/index.js';
 
 export class MarvinLang {
     public static Default = LangCode.EN_US;
 
     private static marvinLang = new Linguini(
-        path.resolve(dirname(fileURLToPath(import.meta.url)), '../../lang/marvin'),
+        path.resolve(dirname(fileURLToPath(import.meta.url)), '../../../../lang/marvin'),
         'lang'
     );
 
@@ -47,16 +47,20 @@ export class MarvinLang {
         return this.marvinLang.getCom(location, variables);
     }
 
-    public static getMentionRNG(
+    public static getComList(
         location: string,
         langCode: LangCode,
         variables?: { [name: string]: string }
-    ): MarvinMentions {
+    ): MarvinComList {
         return (
             this.marvinLang.get(location, langCode, this.mentionRNG, variables) ??
             this.marvinLang.get(location, this.Default, this.mentionRNG, variables)
         );
     }
+
+    private static marvinComListTm: TypeMapper<MarvinComList> = (data: any) => {
+        return new MarvinComList({ data });
+    };
 
     private static messageEmbedTm: TypeMapper<MessageEmbed> = (jsonValue: any) => {
         return new MessageEmbed({
@@ -82,9 +86,5 @@ export class MarvinLang {
             timestamp: jsonValue.timestamp ? Date.now() : undefined,
             color: jsonValue.color ?? MarvinLang.getCom('colors.default'),
         });
-    };
-
-    private static mentionRNG: TypeMapper<MarvinMentions> = (jsonValue: any) => {
-        return new MentionMessage({ rngList: jsonValue });
     };
 }

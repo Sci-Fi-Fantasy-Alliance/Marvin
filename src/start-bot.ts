@@ -1,3 +1,7 @@
+// eslint-disable-next-line import/order
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
 import { Options } from 'discord.js';
@@ -16,7 +20,7 @@ import {
     TriggerHandler,
 } from './events/index.js';
 import { CustomClient } from './extensions/index.js';
-import { Job } from './jobs/index.js';
+import { ChrisAnnoyJob, Job, RandomMessageJob } from './jobs/index.js';
 import { Bot } from './models/bot.js';
 import { Reaction } from './reactions/index.js';
 import { JobService, Logger } from './services/index.js';
@@ -25,7 +29,7 @@ import { MentionBotTrigger, Trigger } from './triggers/index.js';
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');
 let Logs = require('../lang/logs.json');
-//TODO Edit Permissions so Marvin can see other channels.
+
 async function start(): Promise<void> {
     // Client
     let client = new CustomClient({
@@ -74,12 +78,14 @@ async function start(): Promise<void> {
 
     // Jobs
     let jobs: Job[] = [
+        //new RandomMessageJob(client),
+        //new ChrisAnnoyJob(client),
         // TODO: Add new jobs here
     ];
 
     // Bot
     let bot = new Bot(
-        Config.client.token,
+        process.env.MARVIN_MAIN_TOKEN,
         client,
         guildJoinHandler,
         guildLeaveHandler,
