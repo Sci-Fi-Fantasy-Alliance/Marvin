@@ -34,15 +34,5 @@
                 "url": "https://music.youtube.com/watch?v=hTXOW_jJdKE"
             }
         }
-    
-        "favorites": {
-            "number": "42",
-            "color": "Grey",
-            "song": {
-                "trackName": "A Side: Marvin",
-                "author": "Stephen Moore",
-                "url": "https://music.youtube.com/watch?v=hTXOW_jJdKE"
-            }
-        }
     }
 }

@@ -53,8 +53,8 @@ export class MarvinLang {
         variables?: { [name: string]: string }
     ): MarvinComList {
         return (
-            this.marvinLang.get(location, langCode, this.mentionRNG, variables) ??
-            this.marvinLang.get(location, this.Default, this.mentionRNG, variables)
+            this.marvinLang.get(location, langCode, this.marvinComListTm, variables) ??
+            this.marvinLang.get(location, this.Default, this.marvinComListTm, variables)
         );
     }
 
