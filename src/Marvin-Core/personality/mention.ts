@@ -15,7 +15,8 @@ export class MentionEngine extends PersonalityEngine {
             messageData
         );
         Logger.info('MarvinLangMention', marvinLangMention.comList);
-        const i = Math.floor(Math.random() * marvinLangMention.comList.length);
+        const r = Object.keys(marvinLangMention.comList).length;
+        const i = Math.floor(Math.random() * r);
         const reply: string = marvinLangMention.comList[i];
         return reply;
     }

@@ -1,12 +1,39 @@
 import { DiscordAPIError } from 'discord.js';
 import { Response } from 'node-fetch';
-import { createRequire } from 'node:module';
 import pino from 'pino';
 
-const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
+import { FileUtils } from '../utils/index.js';
 
-let logger = pino(
+let fileUtils = new FileUtils();
+
+let date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+let logPath = fileUtils.path.join(fileUtils.mainPath, 'logs', `${year}-${month}-${day}.log`);
+
+
+let logConsole = pino(
+    {
+        formatters: {
+            level: label => {
+                return { level: label };
+            },
+        },
+        transport: {
+            target: 'pino-pretty',
+            options: {
+                colorize: true,
+                ignore: 'pid,hostname',
+                translateTime: 'yyyy-mm-dd HH:MM:ss.l',
+            },
+        },
+    },
+    pino.destination(process.stdout)
+);
+
+let logFile = pino(
     {
         formatters: {
             level: label => {
@@ -14,51 +41,69 @@ let logger = pino(
             },
         },
     },
-    Config.logging.pretty
-        ? pino.transport({
-              target: 'pino-pretty',
-              options: {
-                  colorize: true,
-                  ignore: 'pid,hostname',
-                  translateTime: 'yyyy-mm-dd HH:MM:ss.l',
-              },
-          })
-        : undefined
+    pino.destination(logPath)
 );
 
 export class Logger {
     private static shardId: number;
 
     public static info(message: string, obj?: any): void {
-        obj ? logger.info(obj, message) : logger.info(message);
+        if (!obj) {
+            logConsole.info(message);
+            logFile.info(message);
+            return;
+        } else {
+            logConsole.info(obj, message);
+            logFile.info(obj, message);
+            return;
+        }
     }
 
     public static warn(message: string, obj?: any): void {
-        obj ? logger.warn(obj, message) : logger.warn(message);
+        if (!obj) {
+            logConsole.warn(message);
+            logFile.warn(message);
+            return;
+        } else {
+            logConsole.warn(obj, message);
+            logFile.warn(obj, message);
+            return;
+        }
     }
 
     public static async error(message: string, obj?: any): Promise<void> {
         // Log just a message if no error object
         if (!obj) {
-            logger.error(message);
+            logConsole.error(message);
+            logFile.error(message);
             return;
         }
 
         // Otherwise log details about the error
         if (typeof obj === 'string') {
-            logger
+            logConsole
+                .child({
+                    message: obj,
+                })
+                .error(message);
+            logFile
                 .child({
                     message: obj,
                 })
                 .error(message);
         } else if (obj instanceof Response) {
             let resText: string;
-            try {
-                resText = await obj.text();
-            } catch {
-                // Ignore
-            }
-            logger
+            // Ignore errors from Discord API
+            logConsole
+                .child({
+                    path: obj.url,
+                    statusCode: obj.status,
+                    statusName: obj.statusText,
+                    headers: obj.headers.raw(),
+                    body: resText,
+                })
+                .error(message);
+            logFile
                 .child({
                     path: obj.url,
                     statusCode: obj.status,
@@ -68,7 +113,17 @@ export class Logger {
                 })
                 .error(message);
         } else if (obj instanceof DiscordAPIError) {
-            logger
+            logConsole
+                .child({
+                    message: obj.message,
+                    code: obj.code,
+                    statusCode: obj.httpStatus,
+                    method: obj.method,
+                    path: obj.path,
+                    stack: obj.stack,
+                })
+                .error(message);
+            logFile
                 .child({
                     message: obj.message,
                     code: obj.code,
@@ -79,14 +134,15 @@ export class Logger {
                 })
                 .error(message);
         } else {
-            logger.error(obj, message);
+            logConsole.error(obj, message);
+            logFile.error(obj, message);
         }
     }
 
     public static setShardId(shardId: number): void {
         if (this.shardId !== shardId) {
             this.shardId = shardId;
-            logger = logger.child({ shardId });
+            logConsole = logConsole.child({ shardId });
         }
     }
 }

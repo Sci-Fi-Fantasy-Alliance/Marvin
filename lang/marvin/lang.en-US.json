@@ -10,18 +10,13 @@
                 "Please, be concise, I can barely stand you already."
             ]
         },
-        "random": {
-            "start": [
-                "Hey, you there?",
-                "I think... I think. I think, I think. I think?",
-                "{{COM:aboutMe.developer}} You should stop this soon."
-            ]
+        "randomStart": {
+            "0": "Hey, you there?",
+            "1": "I think... I think. I think, I think. I think?",
+            "2": "{{COM:aboutMe.developer}} You should stop this soon."
         },
         "welcome": {
-            "start":[
-                "Oh ... hello there.",
-                "Hi there"
-            ]
+            "start": ["Oh ... hello there.", "Hi there"]
         }
     },
     "refs": {

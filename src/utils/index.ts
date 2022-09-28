@@ -10,3 +10,4 @@ export { RegexUtils } from './regex-utils.js';
 export { ShardUtils } from './shard-utils.js';
 export { StringUtils } from './string-utils.js';
 export { TimeUtils } from './time-utils.js';
+export { FileUtils } from './file-utils.js';

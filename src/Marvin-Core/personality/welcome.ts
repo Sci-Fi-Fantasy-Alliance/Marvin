@@ -1,7 +1,6 @@
 import { GuildMember, TextChannel } from 'discord.js';
 import { createRequire } from 'node:module';
 
-import { Logger } from '../../services/index.js';
 import { RandomMessageEngine } from './random.js';
 
 const require = createRequire(import.meta.url);
@@ -13,9 +12,6 @@ export class WelcomeEngine extends RandomMessageEngine {
             config.sffa.welcomeChannelID
         ) as TextChannel;
         //TODO: Add things
-
-        const messageStart = this.randomString('welcome.start');
-        Logger.info('MarvinLangWelcomeStart', messageStart);
 
         this.sendMessage(channel, 'Oh ... hello <@' + member.id + '>.')
             .then(_message => {

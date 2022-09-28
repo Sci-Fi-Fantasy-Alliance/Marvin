@@ -20,7 +20,7 @@ import {
     TriggerHandler,
 } from './events/index.js';
 import { CustomClient } from './extensions/index.js';
-import { ChrisAnnoyJob, Job, RandomMessageJob } from './jobs/index.js';
+import { ChangeAvatarJob, FaxWPJob, Job, NerdyPingJob } from './jobs/index.js';
 import { Bot } from './models/bot.js';
 import { Reaction } from './reactions/index.js';
 import { JobService, Logger } from './services/index.js';
@@ -80,6 +80,9 @@ async function start(): Promise<void> {
     let jobs: Job[] = [
         //new RandomMessageJob(client),
         //new ChrisAnnoyJob(client),
+        new ChangeAvatarJob(client),
+        new FaxWPJob(client),
+        new NerdyPingJob(client),
         // TODO: Add new jobs here
     ];
 

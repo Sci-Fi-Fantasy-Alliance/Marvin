@@ -9,7 +9,7 @@ export interface MarvinLangData {
 }
 
 export interface MarvinComList {
-    comList: string[];
+    comList: object;
 }
 
 export interface MarvinLangRefs {
