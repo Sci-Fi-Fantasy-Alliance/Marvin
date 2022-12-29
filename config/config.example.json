@@ -49,7 +49,27 @@
     },
     "jobs": {
         "updateServerCount": {
-            "schedule": "0 */10 * * * *",
+            "schedule": "0 */10 * * * ",
+            "log": false
+        },
+        "randomMessage": {
+            "schedule": "*/3 * * * *",
+            "log": true
+        },
+        "chrisAnnoy": {
+            "schedule": "*/5 * * * *",
+            "log": true
+        },
+        "changeAvatar": {
+            "schedule": "*/6 * * * *",
+            "log": false
+        },
+        "faxWP": {
+            "schedule": "0 16 * * 1",
+            "log": false
+        },
+        "nerdyPing": {
+            "schedule": "0 17 */2 * *",
             "log": false
         }
     },
@@ -76,5 +96,13 @@
         "rateLimit": {
             "minTimeout": 30
         }
+    },
+    "sffa": {
+        "guildID": "",
+        "welcomeChannelID": "",
+        "modChatChannelID": "",
+        "modWorkChannelID": "",
+        "bookClubChannelID": "",
+        "testingChannelID": ""
     }
 }
