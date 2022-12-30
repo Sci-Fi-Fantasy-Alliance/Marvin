@@ -21,7 +21,7 @@ export class CourtOfModPingTemplate implements Job {
     public async run(): Promise<void> {
         const channel = (await ClientUtils.findTextChannel(
             this.client.guilds.cache.get(Config.sffa.guildID),
-            Config.sffa.modWorkChannelID
+            Config.sffa.bookClubChannelID
         )) as TextChannel;
         const annoy = new PersonalityEngine();
         await annoy.sendMessage(

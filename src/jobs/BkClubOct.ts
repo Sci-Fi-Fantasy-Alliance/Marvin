@@ -8,10 +8,10 @@ import { Job } from './index.js';
 const require = createRequire(import.meta.url);
 let Config = require('../../config/config.json');
 
-export class BookClubPostAprJob implements Job {
+export class BookClubPostOctJob implements Job {
     public name = 'Book Club Monthly Ping Template';
-    public schedule: string = Config.jobs.BkClubApr.schedule;
-    public log: boolean = Config.jobs.BkClubApr.log;
+    public schedule: string = Config.jobs.BkClubOct.schedule;
+    public log: boolean = Config.jobs.BkClubOct.log;
     private client: Client<boolean>;
 
     constructor(guild: Client<boolean>) {
@@ -28,7 +28,7 @@ export class BookClubPostAprJob implements Job {
             channel,
             // 961015899656163419 is the ID of the Book Club role
             // eslint-disable-next-line quotes
-            '<@961015899656163419> Here is your reading schedule for the month of April. This month we begin The Wheel of Time wth Book 1, Eye of the World by Robert Jordan!:\n\n- 01/02 APR, Prologue through Ch 10\n- 08/09 APR, Ch 11 through Ch 19\n- 15/16 APR, Ch 20 through Ch 28\n- 22/23 APR, Ch 29 through Ch 34\n- 29/30 APR, Ch 35 through Ch 43\n\n Saturday meetings are at <t:1672268400:t> local time and Sunday meetings are at <t:1672257600:t> local time.\n\n Happy Reading!'
+            "<@961015899656163419> Here is your reading schedule for the month of October. For the first week we will read The Slow Regard for Silent Things by Patrick Rothfuss and then for spooky month we will read Gideon the Ninth (Locked Tomb Book 1) by Tamsyn Muir:\n\n- 07/08 OCT, The Slow Regard of Silent Things (complete)\n- 14/15 OCT, (Gideon) Ch 1 through Ch 12\n- 21/22 OCT, Ch 13 through Ch 25\n- 28/29 OCT, Ch 26 through Epilogue\n\n Saturday meetings are at <t:1672268400:t> local time and Sunday meetings are at <t:1672257600:t> local time.\n\n Happy Reading!"
         );
     }
 }
