@@ -1,12 +1,12 @@
 {
-    "developers": ["<YOUR_DISCORD_ID>"],
+    "developers": ["124589729688584192", "275987768910282752"],
     "client": {
-        "id": "<DISCORD_BOT_ID>",
+        "id": "962049177951535184",
         "intents": [
             "GUILDS",
             "GUILD_MESSAGES",
-            "GUILD_MESSAGE_REACTIONS",
             "GUILD_MEMBERS",
+            "GUILD_MESSAGE_REACTIONS",
             "DIRECT_MESSAGES",
             "DIRECT_MESSAGE_REACTIONS"
         ],
@@ -25,7 +25,7 @@
         }
     },
     "api": {
-        "port": 8080,
+        "port": 2222,
         "secret": "00000000-0000-0000-0000-000000000000"
     },
     "sharding": {
@@ -35,17 +35,17 @@
     },
     "clustering": {
         "enabled": false,
-        "shardCount": 16,
-        "callbackUrl": "http://localhost:8080/",
+        "shardCount": 1,
+        "callbackUrl": "",
         "masterApi": {
-            "url": "http://localhost:5000/",
-            "token": "00000000-0000-0000-0000-000000000000"
+            "url": "",
+            "token": ""
         }
     },
     "trello": {
-        "key": "00000000000",
-        "token": "000000000000000000000000000000000000000",
-        "boards": ["short_id"]
+        "key": "c7812ea7d2822009e0c08d49acc22489",
+        "token": "3d477a8adec1997e937c87e39deb143ccacb4df257cc2694fb34daf2d23f1f65",
+        "boards": ["fiIyGBSg"]
     },
     "jobs": {
         "updateServerCount": {
@@ -72,6 +72,54 @@
             "schedule": "0 17 */2 * *",
             "log": false
         }
+        "BkClubJan": {
+            "schedule": "0 5 1 1 *",
+            "log": false
+        }
+        "BkClubFeb": {
+            "schedule": "0 5 29 1 *",
+            "log": false
+        }
+        "BkClubMar": {
+            "schedule": "0 5 26 2 *",
+            "log": false
+        }
+        "BkClubApr": {
+            "schedule": "0 5 26 3 *",
+            "log": false
+        }    
+        "BkClubMay": {
+            "schedule": "0 5 30 4 *",
+            "log": false
+        } 
+        "BkClubJun": {
+            "schedule": "0 5 28 5 *",
+            "log": false
+        }
+        "BkClubJul": {
+             "schedule": "0 5 25 6 *",
+             "log": false
+        }
+        "BkClubAug": {
+            "schedule": "0 5 30 7 *",
+            "log": false
+       }   
+        "BkClubSep": {
+            "schedule": "0 5 27 8 *",
+            "log": false
+       }
+       "BkClubOct": {
+            "schedule": "0 5 1 10 *",
+            "log": false
+       }  
+       "BkClubNov": {
+            "schedule": "0 5 29 10 *",
+            "log": false
+       } 
+       "BkClubDec": {
+             "schedule": "0 5 26 11 *",
+             "log": false
+      }       
     },
     "rateLimiting": {
         "commands": {
@@ -98,11 +146,11 @@
         }
     },
     "sffa": {
-        "guildID": "",
-        "welcomeChannelID": "",
-        "modChatChannelID": "",
-        "modWorkChannelID": "",
-        "bookClubChannelID": "",
-        "testingChannelID": ""
+        "guildID": "959795934240309248",
+        "welcomeChannelID": "959795934240309251",
+        "modChatChannelID": "960114553495093249",
+        "modWorkChannelID": "1057803612211925002",
+        "bookClubChannelID": "960102689902059562",
+        "testingChannelID": "971247650454249512"
     }
 }
