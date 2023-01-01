@@ -20,7 +20,24 @@ import {
     TriggerHandler,
 } from './events/index.js';
 import { CustomClient } from './extensions/index.js';
-import { ChangeAvatarJob, FaxWPJob, Job, NerdyPingJob } from './jobs/index.js';
+import {
+    BookClubPostAprJob,
+    BookClubPostAugJob,
+    BookClubPostDecJob,
+    BookClubPostFebJob,
+    BookClubPostJanJob,
+    BookClubPostJulJob,
+    BookClubPostJunJob,
+    BookClubPostMarJob,
+    BookClubPostMayJob,
+    BookClubPostNovJob,
+    BookClubPostOctJob,
+    BookClubPostSepJob,
+    ChangeAvatarJob,
+    FaxWPJob,
+    Job,
+    NerdyPingJob,
+} from './jobs/index.js';
 import { Bot } from './models/bot.js';
 import { Reaction } from './reactions/index.js';
 import { JobService, Logger } from './services/index.js';
@@ -83,6 +100,19 @@ async function start(): Promise<void> {
         new ChangeAvatarJob(client),
         new FaxWPJob(client),
         new NerdyPingJob(client),
+        // Book club posts
+        new BookClubPostJanJob(client),
+        new BookClubPostFebJob(client),
+        new BookClubPostMarJob(client),
+        new BookClubPostAprJob(client),
+        new BookClubPostMayJob(client),
+        new BookClubPostJunJob(client),
+        new BookClubPostJulJob(client),
+        new BookClubPostAugJob(client),
+        new BookClubPostSepJob(client),
+        new BookClubPostOctJob(client),
+        new BookClubPostNovJob(client),
+        new BookClubPostDecJob(client),
         // TODO: Add new jobs here
     ];
 
