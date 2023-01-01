@@ -8,10 +8,10 @@ import { Job } from './index.js';
 const require = createRequire(import.meta.url);
 let Config = require('../../config/config.json');
 
-export class CourtOfModPingTemplate implements Job {
+export class BookClubPostMarJob implements Job {
     public name = 'Book Club Monthly Ping Template';
-    public schedule: string = Config.jobs.BkPostTemplate.schedule;
-    public log: boolean = Config.jobs.BkPostTemplate.log;
+    public schedule: string = Config.jobs.BkClubMar.schedule;
+    public log: boolean = Config.jobs.BkClubMar.log;
     private client: Client<boolean>;
 
     constructor(guild: Client<boolean>) {
@@ -28,7 +28,7 @@ export class CourtOfModPingTemplate implements Job {
             channel,
             // 961015899656163419 is the ID of the Book Club role
             // eslint-disable-next-line quotes
-            "<@961015899656163419> Here is your reading light for the month of [MONTH]:\n\n- Week 1: [BOOK 1]\n- Week 2: [BOOK 2]\n- Week 3: [BOOK 3]\n- Week 4: [BOOK 4]"
+            '<@961015899656163419> Here is your reading schedule for the month of March. This month we have Leviathan Wakes (The Expanse #1) by James S.A. Corey!:\n\n- 04/05 MAR, Ch 1 through Ch 13\n- 11/12 MAR, Ch 14 though Ch 28\n- 18/19 MAR, Ch 29 through Ch 42\n- 25/26 MAR, Ch 43 through Epilogue\n\n Saturday meetings are at <t:1672268400:t> local time and Sunday meetings are at <t:1672257600:t> local time.\n\n Happy Reading!'
         );
     }
 }
