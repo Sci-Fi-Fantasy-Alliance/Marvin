@@ -71,7 +71,56 @@
         "nerdyPing": {
             "schedule": "0 17 */2 * *",
             "log": false
-        }
+        },
+
+        "BkClubJan": {
+            "schedule": "0 5 1 1 *",
+            "log": false
+        },
+        "BkClubFeb": {
+            "schedule": "0 5 29 1 *",
+            "log": false
+        },
+        "BkClubMar": {
+            "schedule": "0 5 26 2 *",
+            "log": false
+        },
+        "BkClubApr": {
+            "schedule": "0 5 26 3 *",
+            "log": false
+        }, 
+        "BkClubMay": {
+            "schedule": "0 5 30 4 *",
+            "log": false
+        },
+        "BkClubJun": {
+            "schedule": "0 5 28 5 *",
+            "log": false
+        },
+        "BkClubJul": {
+             "schedule": "0 5 25 6 *",
+             "log": false
+        },
+        "BkClubAug": {
+            "schedule": "0 5 30 7 *",
+            "log": false
+       },
+        "BkClubSep": {
+            "schedule": "0 5 27 8 *",
+            "log": false
+       },
+       "BkClubOct": {
+            "schedule": "0 5 1 10 *",
+            "log": false
+       }, 
+       "BkClubNov": {
+            "schedule": "0 5 29 10 *",
+            "log": false
+       },
+       "BkClubDec": {
+             "schedule": "0 5 26 11 *",
+             "log": false
+      }
     },
     "rateLimiting": {
         "commands": {
@@ -105,52 +154,5 @@
         "bookClubChannelID": "",
         "testingChannelID": ""
     }
-    "BkClubJan": {
-        "schedule": "0 5 1 1 *",
-        "log": false
-    }
-    "BkClubFeb": {
-        "schedule": "0 5 29 1 *",
-        "log": false
-    }
-    "BkClubMar": {
-        "schedule": "0 5 26 2 *",
-        "log": false
-    }
-    "BkClubApr": {
-        "schedule": "0 5 26 3 *",
-        "log": false
-    }    
-    "BkClubMay": {
-        "schedule": "0 5 30 4 *",
-        "log": false
-    } 
-    "BkClubJun": {
-        "schedule": "0 5 28 5 *",
-        "log": false
-    }
-    "BkClubJul": {
-         "schedule": "0 5 25 6 *",
-         "log": false
-    }
-    "BkClubAug": {
-        "schedule": "0 5 30 7 *",
-        "log": false
-   }   
-    "BkClubSep": {
-        "schedule": "0 5 27 8 *",
-        "log": false
-   }
-   "BkClubOct": {
-        "schedule": "0 5 1 10 *",
-        "log": false
-   }  
-   "BkClubNov": {
-        "schedule": "0 5 29 10 *",
-        "log": false
-   } 
-   "BkClubDec": {
-         "schedule": "0 5 26 11 *",
-         "log": false
-  }       
+           
 }

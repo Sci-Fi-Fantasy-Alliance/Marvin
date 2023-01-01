@@ -28,7 +28,7 @@ export class BookClubPostNovJob implements Job {
             channel,
             // 961015899656163419 is the ID of the Book Club role
             // eslint-disable-next-line quotes
-            "<@961015899656163419> Here is your reading schedule for the month of November. This month we are reading Jade City (The Greenbone Saga Book 1) by Fonda Lee:\n\n- 04/05 NOV, Ch 1 through Ch 13\n- 11/12 NOV, Ch 14 through Ch 29\n- 18/19 NOV, Ch 30 through Ch 43\n- 25/26 NOV, Ch 44 through Epilogue\n\n Saturday meetings are at <t:1672268400:t> local time and Sunday meetings are at <t:1672257600:t> local time.\n\n Happy Reading!"
+            '<@&961015899656163419> Here is your reading schedule for the month of November. This month we are reading Jade City (The Greenbone Saga Book 1) by Fonda Lee:\n\n- 04/05 NOV, Ch 1 through Ch 13\n- 11/12 NOV, Ch 14 through Ch 29\n- 18/19 NOV, Ch 30 through Ch 43\n- 25/26 NOV, Ch 44 through Epilogue\n\n Saturday meetings are at <t:1672268400:t> local time and Sunday meetings are at <t:1672257600:t> local time.\n\n Happy Reading!'
         );
     }
 }

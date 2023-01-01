@@ -28,7 +28,7 @@ export class CourtOfModPingTemplate implements Job {
             channel,
             // 961015899656163419 is the ID of the Book Club role
             // eslint-disable-next-line quotes
-            "<@961015899656163419> Here is your reading light for the month of [MONTH]:\n\n- Week 1: [BOOK 1]\n- Week 2: [BOOK 2]\n- Week 3: [BOOK 3]\n- Week 4: [BOOK 4]"
+            '<@&961015899656163419> Here is your reading light for the month of [MONTH]:\n\n- Week 1: [BOOK 1]\n- Week 2: [BOOK 2]\n- Week 3: [BOOK 3]\n- Week 4: [BOOK 4]'
         );
     }
 }
